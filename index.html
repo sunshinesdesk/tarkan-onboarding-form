@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Tarkan Labs – Onboarding Requirements</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+    :root {
+      --light-bg: #fffBd7;
+      --accent: #fff27a;
+      --muted: #d4cb7a;
+      --dark: #827c49;
+      --white: #ffffff;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: var(--light-bg);
+      color: var(--dark);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: auto;
+      padding: 30px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 30px;
+    }
+
+    header img {
+      max-height: 60px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
+    }
+
+    .note {
+      background: var(--accent);
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      font-size: 14px;
+    }
+
+    .progress-wrapper {
+      margin: 25px 0;
+    }
+
+    .progress-bar {
+      height: 18px;
+      background: var(--muted);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .progress {
+      height: 100%;
+      width: 0%;
+      background: var(--dark);
+      transition: width 0.3s ease;
+    }
+
+    .progress-text {
+      margin-top: 6px;
+      font-size: 13px;
+      text-align: right;
+    }
+
+    section {
+      background: var(--white);
+      padding: 20px;
+      border-radius: 10px;
+      margin-bottom: 25px;
+    }
+
+    section h2 {
+      margin-top: 0;
+    }
+
+    .checkbox-group label {
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="tel"] {
+      width: 100%;
+      padding: 8px;
+      margin: 5px 0 12px 0;
+      border-radius: 5px;
+      border: 1px solid var(--muted);
+    }
+
+    .cta {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 18px;
+      background: var(--dark);
+      color: var(--white);
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 14px;
+      background: var(--dark);
+      color: var(--white);
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    footer {
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+    }
+
+    .contact span {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .small-note {
+      font-size: 12px;
+      opacity: 0.8;
+    }
+  </style>
+
+  <script>
+    function updateProgress() {
+      const checkboxes = document.querySelectorAll("input[type='checkbox']");
+      const checked = document.querySelectorAll("input[type='checkbox']:checked").length;
+      const total = checkboxes.length;
+      const percent = total ? Math.round((checked / total) * 100) : 0;
+      document.querySelector(".progress").style.width = percent + "%";
+      document.querySelector(".progress-text").innerText = percent + "% completed";
+    }
+
+    document.addEventListener("change", updateProgress);
+  </script>
+</head>
+
+<body>
+
+<div class="container">
+
+  <header>
+    <img src="assets/tarkan-logo.png" alt="Tarkan Labs Logo">
+    <img src="assets/sunshine-logo.png" alt="Sunshine Social Desk Logo">
+  </header>
+
+  <h1>Tarkan Labs – Onboarding Requirements 🌞</h1>
+
+  <div class="note">
+    To initiate the onboarding process smoothly and ensure structured execution from Month 1, we request you to kindly share the following details and materials.
+  </div>
+
+  <div class="progress-wrapper">
+    <div class="progress-bar">
+      <div class="progress"></div>
+    </div>
+    <div class="progress-text">0% completed</div>
+  </div>
+
+  <form name="tarkan-onboarding"
+        method="POST"
+        action="/thank-you"
+        data-netlify="true"
+        netlify-honeypot="bot-field"
+        enctype="multipart/form-data">
+
+    <input type="hidden" name="form-name" value="tarkan-onboarding" />
+    <input type="hidden" name="bot-field" />
+
+    <!-- 1. Account Access -->
+    <section>
+      <h2>1. Account Access</h2>
+      <div class="note">
+        As discussed, we will first assess whether Instagram uploads are automatically syncing to Facebook. If that system functions smoothly, Facebook login credentials may not be required immediately. At this stage, Meta Business Suite or access to any other platforms is not required.
+      </div>
+
+      <label>
+        <input type="checkbox" name="instagram_access" required>
+        Instagram login credentials *
+      </label>
+      <input type="text" name="instagram_username" placeholder="Instagram Username" required>
+      <input type="password" name="instagram_password" placeholder="Instagram Password" required>
+
+      <label>
+        <input type="checkbox" name="facebook_access">
+        Facebook login credentials (only if required)
+      </label>
+      <input type="text" name="facebook_username" placeholder="Facebook Username">
+      <input type="password" name="facebook_password" placeholder="Facebook Password">
+    </section>
+
+    <!-- 2. Brand Assets -->
+    <section>
+      <h2>2. Brand Assets</h2>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="logo_png"> Logo (high-resolution PNG format)</label>
+        <label><input type="checkbox" name="logo_transparent"> Logo with transparent background</label>
+        <label><input type="checkbox" name="brand_colors"> Brand color codes (if available)</label>
+        <label><input type="checkbox" name="fonts"> Font files (if specific brand fonts are used)</label>
+        <label><input type="checkbox" name="brand_guidelines"> Any existing brand guideline document (if available)</label>
+      </div>
+      <a class="cta" href="DRIVE_LINK_PLACEHOLDER" target="_blank">Upload all brand assets to Drive</a>
+    </section>
+
+    <!-- 3. Existing Content & Media -->
+    <section>
+      <h2>3. Existing Content & Media</h2>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="founder_video"> Founder storytelling video (raw footage)</label>
+        <label><input type="checkbox" name="team_footage"> Any additional raw founder or team footage</label>
+        <label><input type="checkbox" name="product_photos"> High-resolution product photographs</label>
+        <label><input type="checkbox" name="demo_videos"> Product demo videos (raw versions, if available)</label>
+        <label><input type="checkbox" name="packaging_images"> Packaging images</label>
+        <label><input type="checkbox" name="manufacturing_visuals"> Manufacturing or process visuals (if available)</label>
+        <label><input type="checkbox" name="testimonials"> Customer testimonial content (written or video, if available)</label>
+      </div>
+      <a class="cta" href="DRIVE_LINK_PLACEHOLDER" target="_blank">Upload all media to Drive</a>
+    </section>
+
+    <!-- 4. Product Information -->
+    <section>
+      <h2>4. Product Information</h2>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="catalogue"> Updated product catalogue (PDF or Drive link)</label>
+        <label><input type="checkbox" name="focus_products"> Current focus product list (especially baby products)</label>
+        <label><input type="checkbox" name="pricing"> Internal product pricing list (for content planning reference)</label>
+        <label><input type="checkbox" name="launches"> Details of any upcoming launches in the next 2–3 months</label>
+        <label><input type="checkbox" name="best_sellers"> Best-selling products and performance insights</label>
+      </div>
+      <a class="cta" href="GOOGLE_DOC_PLACEHOLDER" target="_blank">Upload all available here</a>
+    </section>
+
+    <!-- 5. Creator & Collaboration -->
+    <section>
+      <h2>5. Creator & Collaboration Information</h2>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="creator_list"> List of creators previously worked with</label>
+        <label><input type="checkbox" name="inbound_creators"> Recent inbound creator collaboration requests</label>
+        <label><input type="checkbox" name="creator_guidelines"> Guidelines or restrictions (if any)</label>
+        <label><input type="checkbox" name="creator_budget"> Budget structure for creator collaborations</label>
+      </div>
+      <a class="cta" href="GOOGLE_DOC_PLACEHOLDER" target="_blank">Add creator details in Google Doc</a>
+    </section>
+
+    <!-- 6. E-commerce & Digital Links -->
+    <section>
+      <h2>6. E-commerce & Digital Links</h2>
+      <label><input type="checkbox" name="website"> Website link (if applicable)</label>
+      <input type="text" name="website_link" placeholder="Website URL">
+
+      <label><input type="checkbox" name="amazon"> Amazon store link</label>
+      <input type="text" name="amazon_link" placeholder="Amazon Store URL">
+
+      <label><input type="checkbox" name="flipkart"> Flipkart store link</label>
+      <input type="text" name="flipkart_link" placeholder="Flipkart Store URL">
+
+      <label><input type="checkbox" name="other_marketplace"> Other marketplace links</label>
+      <input type="text" name="other_marketplace_link" placeholder="Other marketplace URL">
+    </section>
+
+    <!-- 7. Operational Clarity -->
+    <section>
+      <h2>7. Operational Clarity</h2>
+      <label><input type="checkbox" name="poc"> Primary point of contact</label>
+      <input type="text" name="poc_name" placeholder="Name">
+      <input type="tel" name="poc_phone" placeholder="Contact Number">
+    </section>
+
+    <!-- 8. Legal & Compliance -->
+    <section>
+      <h2>8. Legal & Compliance Notes</h2>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="disclaimers"> Disclaimers required for baby products</label>
+        <label><input type="checkbox" name="restricted_words"> Words, claims, or topics to avoid</label>
+        <label><input type="checkbox" name="regulations"> Regulatory or compliance considerations</label>
+      </div>
+      <a class="cta" href="GOOGLE_DOC_PLACEHOLDER" target="_blank">Add legal guidelines in Google Doc</a>
+    </section>
+
+    <!-- 9. Additional -->
+    <section>
+      <h2>9. Additional (Helpful, if Available)</h2>
+      <div class="checkbox-group">
+        <label><input type="checkbox" name="reviews"> Customer reviews</label>
+        <label><input type="checkbox" name="faqs"> Frequently asked questions</label>
+      </div>
+      <a class="cta" href="GOOGLE_DOC_PLACEHOLDER" target="_blank">Add additional details</a>
+    </section>
+
+    <section>
+      <a class="cta" href="#" onclick="window.print()">Download as PDF</a>
+    </section>
+
+    <button class="submit-btn" type="submit">Send Details to SSD</button>
+
+  </form>
+
+  <footer>
+    <div class="contact">
+      <span>📧 sunshinesocialdesk@gmail.com</span>
+      <span>📞 +91 ****</span>
+    </div>
+    <div class="small-note">Curated with intent, care and structure.</div>
+  </footer>
+
+</div>
+
+</body>
+</html>
