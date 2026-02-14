@@ -163,10 +163,23 @@ gap: 20px;
 
 <div class="container">
 
-  <header>
-    <img src="assets/tarkan-logo.png" alt="Tarkan Labs Logo">
-    <img src="assets/sunshine-logo.png" alt="Sunshine Social Desk Logo">
-  </header>
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo-left,
+.logo-right {
+  display: flex;
+  align-items: center;
+}
+
+.logo-left img,
+.logo-right img {
+  max-height: 55px;
+  width: auto;
+}
 
   <h1>Tarkan Labs – Onboarding Requirements 🌞</h1>
 
@@ -337,6 +350,7 @@ After completing this checklist, please download this document and share it with
 </body>
 
 </html>
+
 
 
 
